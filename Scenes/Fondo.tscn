@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/d_parti_estrella.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/d_fondo.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/comic.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.027451, 0.0784314, 0.345098, 1 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 0.392157, 1, 1, 1, 0.784314 )
+
+[node name="Fondo" type="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Vacio" type="Panel" parent="."]
+margin_left = 113.0
+margin_top = 58.0
+margin_right = 729.0
+margin_bottom = 399.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Estrellas" type="CPUParticles2D" parent="."]
+position = Vector2( 70, 239 )
+amount = 20
+lifetime = 10.0
+preprocess = 10.0
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 210 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 70.0
+angular_velocity = 10.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.2
+scale_amount_random = 0.8
+color_initial_ramp = SubResource( 2 )
+hue_variation = 0.06
+hue_variation_random = 0.74
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Mandos" type="Node2D" parent="."]
+position = Vector2( 0, 124 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Mandos" type="Label" parent="Mandos"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+margin_right = 78.0
+margin_bottom = 181.0
+rect_rotation = 26.4
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 3 )
+text = "use:
+7 8 9
+4 5 6
+1 2 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Nave" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}

@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/comic.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/d_ent_final_strip2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/d_final.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Final.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/cayendo.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Finalizar"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ente:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 554, 256 ), Vector2( 609, 427 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ente/Mensaje:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ente:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 554, 256 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ente/Mensaje:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Final" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fondo" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ente" type="Sprite" parent="."]
+position = Vector2( 554, 256 )
+texture = ExtResource( 2 )
+hframes = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Mensaje" type="Sprite" parent="Ente"]
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Texto" type="Label" parent="Ente/Mensaje"]
+margin_left = -74.0
+margin_top = -40.0
+margin_right = 225.0
+margin_bottom = 34.0
+rect_scale = Vector2( 0.666, 0.666 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Jueeeputaaaaaa!!!!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Score" type="Label" parent="."]
+margin_left = 323.0
+margin_top = 140.0
+margin_right = 454.0
+margin_bottom = 227.0
+rect_rotation = -11.0
+custom_fonts/font = ExtResource( 1 )
+text = "0 1 2 3 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Reflexion" type="Label" parent="."]
+margin_left = 103.0
+margin_top = 261.0
+margin_right = 529.0
+margin_bottom = 612.0
+rect_scale = Vector2( 0.666, 0.666 )
+custom_fonts/font = ExtResource( 1 )
+text = "¿Qué esperaba? ser devuelto con suavidad por mis ímpios captores... o ¿Acaso una vida de esclavitud en quién sabe qué estrella? en todo caso, si ahora caigo del cielo sé que todo fué producto de mi fama"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Volver" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0.00392157 )
+margin_right = 804.0
+margin_bottom = 698.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Anima" type="AnimationPlayer" parent="."]
+anims/Finalizar = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="sonido" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]
+[connection signal="animation_finished" from="Anima" to="." method="_on_Anima_animation_finished"]
