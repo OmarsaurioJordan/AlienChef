@@ -1,10 +1,12 @@
-# Title
+# AlienChef (OvniChef)
 
-Requiere ...
+Requiere Godot 4.4
 
-Este software...
+Finalizado en 2025
 
-puede probarlo en: ...
+Este videojuego fué creado para la Cali Game Jam 1, asocie sonidos a ingredientes para cocinar para los aliens
+
+puede probarlo en: https://omwekiatl.itch.io/ovnichef
 
 Licencia:
 puede hacer lo que quiera con este software siempre que de créditos y No sea con propósitos comerciales.
